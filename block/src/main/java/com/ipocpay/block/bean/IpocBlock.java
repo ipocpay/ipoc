@@ -16,6 +16,6 @@ package com.ipocpay.block.bean;
  * @date 2018-08-10
  *
  */
-public class IbocBlock {
+public class IpocBlock {
 
 }
