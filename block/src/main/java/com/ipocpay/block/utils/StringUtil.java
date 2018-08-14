@@ -1,31 +1,25 @@
-/**  
-* @Title: StringUtil.java
-* @Package com.ipocpay.block.utils
-* @Description: generate electronic signatures
-* @author ipocpay@gmail.com  
-* @date 2018-08-05
-* @version V1.0  
-*/
 package com.ipocpay.block.utils;
 
-import java.security.Key;
-import java.security.MessageDigest;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.util.Base64;
-import com.google.gson.GsonBuilder;
 
+import com.google.gson.GsonBuilder;
+import com.ipocpay.transaction.IpocTransaction;
+
+import java.security.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 
 /**
- * @ClassName: StringUtil
- * @Description: generate electronic signatures
- * @author ipocpay@gmail.com
- * @date 2018-08-05
+ * 生成电子签名的工具类
+ * Created on 2018/3/10 0010.
  *
+ * @author zlf
+ * @email i@merryyou.cn
+ * @since 1.0
  */
 public class StringUtil {
-	public static String applySha256(String input) {
+
+    public static String applySha256(String input) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(input.getBytes("UTF-8"));
@@ -85,7 +79,28 @@ public class StringUtil {
         return Base64.getEncoder().encodeToString(key1.getEncoded());
     }
 
-   
+    public static String getMerkleRoot(ArrayList<IpocTransaction> IpocTransactions) {
+        int count = IpocTransactions.size();
+
+        List<String> previousTreeLayer = new ArrayList<String>();
+        for(IpocTransaction IpocTransaction : IpocTransactions) {
+            previousTreeLayer.add(IpocTransaction.IpocTransactionId);
+        }
+        List<String> treeLayer = previousTreeLayer;
+
+        while(count > 1) {
+            treeLayer = new ArrayList<String>();
+            for(int i=1; i < previousTreeLayer.size(); i+=2) {
+                treeLayer.add(applySha256(previousTreeLayer.get(i-1) + previousTreeLayer.get(i)));
+            }
+            count = treeLayer.size();
+            previousTreeLayer = treeLayer;
+        }
+
+        String merkleRoot = (treeLayer.size() == 1) ? treeLayer.get(0) : "";
+        return merkleRoot;
+    }
+
     public static void main(String[] args) {
         System.out.println(StringUtil.applySha256("123"));
     }
