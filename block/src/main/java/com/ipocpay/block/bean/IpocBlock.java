@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.ipocpay.block.utils.StringUtil;
-import com.ipocpay.transaction.IpocTransaction;
+import com.ipocpay.trans.IpocTransaction;
 
 
 /**

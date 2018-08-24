@@ -2,7 +2,7 @@ package com.ipocpay.block.utils;
 
 
 import com.google.gson.GsonBuilder;
-import com.ipocpay.transaction.IpocTransaction;
+import com.ipocpay.trans.IpocTransaction;
 
 import java.security.*;
 import java.util.ArrayList;
@@ -10,12 +10,11 @@ import java.util.Base64;
 import java.util.List;
 
 /**
- * 生成电子签名的工具类
- * Created on 2018/3/10 0010.
+ * @ClassName: StringUtil
+ * @Description: generate electronic signatures
+ * @author ipocpay@gmail.com
+ * @date 2018-08-05
  *
- * @author zlf
- * @email i@merryyou.cn
- * @since 1.0
  */
 public class StringUtil {
 
