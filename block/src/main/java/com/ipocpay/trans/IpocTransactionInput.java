@@ -15,7 +15,7 @@ package com.ipocpay.trans;
  * @Description: TODO
  * @author ipocpay@gmail.com
  * @date 2018-8-24
- *
+ * 
  */
 public class IpocTransactionInput {
 	 public String ipocTransactionOutputId; //Reference to TransactionOutputs -> transactionId

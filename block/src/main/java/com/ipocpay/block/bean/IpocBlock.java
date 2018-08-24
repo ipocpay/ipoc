@@ -12,7 +12,7 @@ import com.ipocpay.trans.IpocTransaction;
  * @Description: ipoc bean
  * @author ipocpay@gmail.com
  * @date 2018-08-10
- *
+ * 
  */
 public class IpocBlock {
 	public String hash;

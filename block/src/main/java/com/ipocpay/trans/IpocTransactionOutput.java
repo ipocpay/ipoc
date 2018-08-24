@@ -18,7 +18,7 @@ import com.ipocpay.block.utils.StringUtil;
  * @ClassName: IpocTransactionOutput
  * @Description: TODO
  * @author ipocpay@gmail.com
- * @date 2018-8-24
+ * @date 2018-8-24 
  *
  */
 public class IpocTransactionOutput {
