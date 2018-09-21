@@ -4,7 +4,7 @@ package com.ipocpay.wallet;
 * @Title: IpocWallet.java
 * @Package com.ipocpay.IpocWallet
 * @Description: IpocBlock Chain Wallet
-* @author icocpay@gmail.com  
+* @author ipocpay@gmail.com  
 * @date 2018-8-31
 * @version V1.0  
 */
