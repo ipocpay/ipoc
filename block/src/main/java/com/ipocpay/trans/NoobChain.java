@@ -13,7 +13,7 @@ import com.ipocpay.wallet.IpocWallet;
 * @Package com.ipocpay.trans
 * @Description: IpocBlock NoobChain
 * @author ipocpay@gmail.com  
-* @date 2018-9-22
+* @date 2018-9-21
 * @version V1.0  
 */
 public class NoobChain {
