@@ -1,7 +1,11 @@
 package com.ipocpay.trans;
 
+import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.ArrayList;
+
+import com.ipocpay.block.utils.StringUtil;
+
 
 
 
@@ -34,5 +38,8 @@ public class IpocTransaction {
         this.inputs = inputs;
     }
 
-  
+    public void generateSignature(PrivateKey privateKey) {
+        String data = com.ipocpay.block.utils.StringUtil.getStringFromKey(sender) + com.ipocpay.block.utils.StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        signature = StringUtil.applyECDSASig(privateKey,data);//gernerate siganature
+    }
 }
