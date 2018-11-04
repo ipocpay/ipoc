@@ -42,4 +42,8 @@ public class IpocTransaction {
         String data = com.ipocpay.block.utils.StringUtil.getStringFromKey(sender) + com.ipocpay.block.utils.StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
         signature = StringUtil.applyECDSASig(privateKey,data);//gernerate siganature
     }
+    public boolean verifySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        return StringUtil.verifyECDSASig(sender, data, signature);//validate siganature
+    }
 }
