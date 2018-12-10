@@ -46,4 +46,13 @@ public class IpocTransaction {
         String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
         return StringUtil.verifyECDSASig(sender, data, signature);//validate siganature
     }
+    
+    public float getInputsValue() {
+        float total = 0;
+        for(IpocTransactionInput i : inputs) {
+            if(i.UTXO == null) continue; //if IpocTransaction can't be found skip it, This behavior may not be optimal.
+            total += i.UTXO.value;
+        }
+        return total;
+    }
 }
