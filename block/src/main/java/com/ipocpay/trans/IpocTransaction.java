@@ -29,7 +29,7 @@ public class IpocTransaction {
     public ArrayList<IpocTransactionInput> inputs = new ArrayList<IpocTransactionInput>();// transaction input
     public ArrayList<IpocTransactionOutput> outputs = new ArrayList<IpocTransactionOutput>(); // transaction output
    
-
+    private static int sequence = 0; //have produced trans
     // Constructor:
     public IpocTransaction(PublicKey from, PublicKey to, float value,  ArrayList<IpocTransactionInput> inputs) {
         this.sender = from;
@@ -54,5 +54,13 @@ public class IpocTransaction {
             total += i.UTXO.value;
         }
         return total;
+    }
+    private String calulateHash() {
+        sequence++; //increase the sequence to avoid 2 identical IpocTransactions having the same hash
+        return StringUtil.applySha256(
+                StringUtil.getStringFromKey(sender) +
+                        StringUtil.getStringFromKey(reciepient) +
+                        Float.toString(value) + sequence
+        );
     }
 }
